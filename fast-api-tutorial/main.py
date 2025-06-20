@@ -3,11 +3,15 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.get("/")
-async def home():
-    return {"message": "Hello, Python FastAPI World!"}
+inventory = {
+    1: {
+        "name": "Milk",
+        "price": 3.99,
+        "brand": "HillFarm",
+    }
+}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+@app.get("/get-item/{item_id}")
+def get_item(item_id: int):
+    return inventory[item_id]
