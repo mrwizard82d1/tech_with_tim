@@ -16,10 +16,9 @@ class Fruits(BaseModel):
 app = FastAPI()
 
 origins = [
-    # Because we are running on port 3000 but the frontend component
-    # queries port 5173, running the application will produce a CORS
-    # error.
-    "http://localhost:3000",
+    # We correct the previously encountered CORS error by listening
+    # for queries on port 5173.
+    "http://localhost:5173",
 ]
 
 app.add_middleware(
